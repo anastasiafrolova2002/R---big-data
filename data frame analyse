@@ -1,0 +1,80 @@
+num<-c(1:10)
+square<-num*num
+plot(num,square,type="S")
+opar <- par(no.readonly=TRUE) # создает копию текущих параметров
+par(lty=2, pch=17)            # назначает тип линии – пунктирная (lty=2) вместо  
+#сплошной по умолчанию и тип символа – заполненный треугольник (pch=17)
+plot(num,square,type="b")
+par(opar) 			 #восстановление исходных значений параметров
+plot(num, square, type="b", lty=2, pch=9) 
+############
+#круговая
+n <- 10
+mycolors <- rainbow(n)
+pie(rep(1, n), labels=mycolors, col=mycolors) # Круговая диаграмма 
+mygrays <- gray(0:n/n)
+pie(rep(1, n), labels=mygrays, col=mygrays)
+
+#
+opar <- par(no.readonly=TRUE)      
+par(pin=c(2, 3))                    
+par(lwd=2, cex=1.5)            
+par(cex.axis=.75, font.axis=3)      
+plot(num, square, type="b", pch=19, lty=2, col="red")    
+plot(num, square, type="b", pch=23, lty=6, col="blue", bg="green")
+par(opar)
+
+month<-c("янв","февр","март" ,"апр" ,"май" ,"июнь" ,"июль","авг","сент", "окт","ноя","дек")
+month.f=month
+month.o=ordered(month.f,levels=month)
+
+plot(month.o, square, type="b", pch=23, lty=6, col="blue", bg="green")
+plot(num, square, type="b", pch=23, lty=6, col="blue", bg="green", las=3)
+##
+
+plot(num, square, type="b", col="green", lty=2, pch=2, lwd=2,main="Квадратичная зависимость", sub="Просто квадрат числа", xlab="Month", ylab="Квадрат числа",xlim=c(0, 12), ylim=c(0, 300))
+#
+plot(num, square, type="b",  ann=FALSE, col="green", lty=2, pch=2, lwd=2,xlim=c(0, 12), ylim=c(0, 300))
+title(main="Квадратичная зависимость", col.main="red",sub="Просто квадрат числа", col.sub="blue", xlab="Month", ylab="Квадрат числа",col.lab="green", cex.lab=1)
+###
+
+
+#Норвегия - Парусный спорт
+s = summary(OlimpicGamesMan)
+sum_man = apply(OlimpicGamesMan[1:6],2,sum)
+sum_woman = apply(OlimpicGamesWoman[1:6],2,sum)
+sum_mix = apply(OlimpicGamesMix[1:6],2,sum)
+
+sum_woman_2= apply(OlimpicGamesWM,2,sum)
+
+plot(sum_woman,type="b",col="darkgreen",lty=1,,ylab="Количество наград",xlab="Место")
+title(main="Количество медалей среди всех типов команд", col.main="darkred")
+lines(sum_man,type="b",col="magenta",lty=5)
+lines(sum_mix,type="b",col="blue",lty=4)
+legend("right",c("Женщины","Мужчины","Микст"),title="Year",fill=c("darkgreen","magenta","blue"))
+
+pie(OlimpicGamesWM[1,1])
+s<-c(OlimpicGamesWM[1,1:4])
+s
+pie(s)
+
+plot(OlimpicGamesMan[,1],type="b",ylab="Score",xlab="Place",lty=2)
+title(main="Man score in years",col.main="purple")
+lines(OlimpicGamesMan[,6],col="pink",lty=6,type = "b")
+lines(OlimpicGamesMan[,5],col="blue",lty=3,type="b")
+legend("right",c("1992","2012","2020"),title="Year",fill=c("black","pink","blue"))
+
+plot(OlimpicGamesWoman[,1],type="b",ylab="Score",xlab="Place",lty=2)
+title(main="Woman score in years",col.main="purple")
+lines(OlimpicGamesWoman[,2],col="pink",lty=6,type = "b")
+lines(OlimpicGamesWoman[,4],col="blue",lty=3,type="b")
+lines(OlimpicGamesWoman[,6],col="orange",lty=4,type="b")
+legend("right",c("1992","1996","2004","2020"),title="Year",fill=c("black","pink","blue","orange"))
+
+plot(OlimpicGamesMix[,1],type="b",ylab="Score",xlab="Place",lty=2)
+title(main="Minsk score in years",col.main="purple")
+lines(OlimpicGamesMix[,2],col="purple",lty=6,type = "b")
+lines(OlimpicGamesMix[,3],col="red",lty=3,type="b")
+lines(OlimpicGamesMix[,4],col="green",lty=4,type="b")
+legend("right",c("1992","1996","2000","2004"),title="Year",fill=c("black","purple","red","green"))
+
